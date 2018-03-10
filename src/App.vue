@@ -4,18 +4,10 @@
   </div>
 </template>
 
-<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDgejenkaYCik4LPmeLe3I5CNwuCH6rVak",
-    authDomain: "firevue-test-412cb.firebaseapp.com",
-    databaseURL: "https://firevue-test-412cb.firebaseio.com",
-    projectId: "firevue-test-412cb",
-    storageBucket: "firevue-test-412cb.appspot.com",
-    messagingSenderId: "23707998568"
-  };
-  firebase.initializeApp(config);
+export default {
+  name: 'App'
+}
 </script>
 
 <style>

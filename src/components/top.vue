@@ -15,14 +15,31 @@
       <div class="card"><p>中臣の 太祝詞言 言ひ祓へ 贖ふ命も 誰がために汝れ</p></div>
       <div class="card"><p>Without haste, but without rest.</p></div>
       <div class="card"><p>Let's Do this!!</p></div>
+      <div class="card" id="uta01"></div>
     </div>
   </div>
 </template>
 
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 <script>
-
-export default {
+import * as firebase from 'firebase'
+// Initialize Firebase
+var config = {
+  apiKey: 'AIzaSyDgejenkaYCik4LPmeLe3I5CNwuCH6rVak',
+  authDomain: 'firevue-test-412cb.firebaseapp.com',
+  databaseURL: 'https://firevue-test-412cb.firebaseio.com',
+  projectId: 'firevue-test-412cb',
+  storageBucket: 'firevue-test-412cb.appspot.com',
+  messagingSenderId: '23707998568'
 }
+firebase.initializeApp(config)
+
+var database = firebase.database()
+var dataRef = database.ref('/uta-data')
+dataRef.once('value')
+  .then(function (snapshot) {
+    document.getElementById('uta01').innerHTML = snapshot.child('uta01').val()
+  })
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -67,8 +84,6 @@ export default {
     font-family: 'Yu Gothic','MS Gothic';
     color: var(--color);
     background: black;
-  }
-  .main {
   }
   .card {
     text-align: left;
