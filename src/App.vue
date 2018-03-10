@@ -1,20 +1,12 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div>
     <router-view/>
   </div>
 </template>
 
-<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 <script>
-
-  var Vue = require('vue')
-  var VueFire = require('vuefire')
-  var firebase = require('firebase')
-
-  // explicit installation required in module environments
-  Vue.use(VueFire)
-
+  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDgejenkaYCik4LPmeLe3I5CNwuCH6rVak",
     authDomain: "firevue-test-412cb.firebaseapp.com",
@@ -22,22 +14,28 @@
     projectId: "firevue-test-412cb",
     storageBucket: "firevue-test-412cb.appspot.com",
     messagingSenderId: "23707998568"
-  }
-
-  firebase.initializeApp(config)
-
-export default {
-  name: 'App'
-}
+  };
+  firebase.initializeApp(config);
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import url(http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css);
+  @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+  @import url(https://fonts.googleapis.com/css?family=Rammetto+One);
+  @import url(https://fonts.googleapis.com/earlyaccess/mplus1p.css);
+
+  .wf-mplus1p { font-family: "Mplus 1p"; }
+
+  /* 以下のhtml2行はYahooのreset.cssを使った都合でこれを入れておかないと背景がおかしくなる */
+  html {
+    background-color: transparent;
+    background-image: none;
+  }
+
+  body {
+    background: whitesmoke;
+    font-family: "Rammetto One","Mplus 1p", cursive;
+    color: #000;
+    font-size: 2rem;;
+  }
 </style>
