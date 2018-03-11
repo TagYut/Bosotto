@@ -2,10 +2,10 @@
   <div class="main-contents">
     <ul class="nav">
       <li class="nav-title">Yuesagashi/ゆえさがし</li>
-      <li class="nav__text">ゆえなきうた（らんだむに表示する）</li>
-      <li class="nav__text">さがす（詩をさがす）</li>
-      <li class="nav__text">うたう（詩をかく）</li>
-      <li class="nav__text">きみたちのうた（ろぐいんする）</li>
+      <li class="nav__text"><span class="nav__bigger">ゆ</span>えなきうた（らんだむに表示する）</li>
+      <li class="nav__text"><span class="nav__bigger">さ</span>がす（詩をさがす）</li>
+      <li class="nav__text"><span class="nav__bigger">う</span>たう（詩をかく）</li>
+<!--      <li class="nav__text"><span class="nav__bigger">き</span>みたちのうた（ろぐいんする）</li> -->
     </ul>
     <div class="title">
       <h2 class="title__big-text"><span class="title__bigger">Y</span>UESAGASHI.</h2>
@@ -16,12 +16,14 @@
       <div class="card"><p>Without haste, but without rest.</p></div>
       <div class="card"><p>Let's Do this!!</p></div>
       <div class="card" id="uta01"></div>
+      <button id="button">Test</button>
     </div>
   </div>
 </template>
 
 <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 <script>
+import Vue from 'vue'
 import * as firebase from 'firebase'
 // Initialize Firebase
 var config = {
@@ -36,10 +38,15 @@ firebase.initializeApp(config)
 
 var database = firebase.database()
 var dataRef = database.ref('/uta-data')
-dataRef.once('value')
-  .then(function (snapshot) {
-    document.getElementById('uta01').innerHTML = snapshot.child('uta01').val()
-  })
+  dataRef.on ('value',function (snapshot) {
+      document.getElementById("button").onclick = function() {
+        document.getElementById('uta01').innerHTML = snapshot.child('uta01').val()
+      }
+    })
+
+export default {
+
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -49,25 +56,33 @@ dataRef.once('value')
 
   .main-contents {
     --color: whitesmoke;
-    margin: 0 10px 10px 10px;
+    margin: 0 5% 0 5%;
     padding: 0 5% 0 5%;
   }
   .nav {
+    position: absolute;
     height: 25px;
+    width: 80%;
     color: var(--color);
     background: black;
     font-family: 'Yu Gothic','MS Gothic';
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: left;
   }
   .nav-title {
+    margin-left: 5px;
     text-align: left;
+    font-size: 1rem;
     display: inline-block;
   }
   .nav__text {
+    margin-left: 5%;
     text-align: right;
     display: inline-block;
+  }
+  .nav__bigger {
+    font-size: 1rem;
   }
   .title__bigger {
     font-size: 3rem;

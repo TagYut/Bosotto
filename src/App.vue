@@ -5,8 +5,11 @@
 </template>
 
 <script>
+import top from "./components/top.vue"
 export default {
-  name: 'App'
+  components: {
+    top
+  }
 }
 </script>
 
