@@ -4,14 +4,14 @@
 
 ## 要件
 
-- [] Gulpとsassの導入し、使うこと
-- [] RWD対応されていること
-- [] [モバイルファースト](https://qiita.com/deerboy/items/5bfefc20a53098f7be16#%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%81%A7%E3%81%AEcss%E8%A8%AD%E8%A8%88)であること
-- [] [BEMによるコンポーネント設計](https://qiita.com/deerboy/items/c891e20c36eb1fe2a4f5)がされていること
-- [] JSによるなんらかの機能があること（ショボくても良い）
-- [] [OGPタグが入っていること](https://qiita.com/sutara79/items/d7a45f6c4796c1ee1590)
-- [] [Faviconが入っていること](https://qiita.com/deerboy/items/0a2d3ce368c5134511b8)
-- [] 正しいコミットメッセージが使われていること。
+- [ ] Gulpとsassの導入し、使うこと
+- [ ] RWD対応されていること
+- [ ] [モバイルファースト](https://qiita.com/deerboy/items/5bfefc20a53098f7be16#%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E3%83%95%E3%82%A1%E3%83%BC%E3%82%B9%E3%83%88%E3%81%A7%E3%81%AEcss%E8%A8%AD%E8%A8%88)であること
+- [ ] [BEMによるコンポーネント設計](https://qiita.com/deerboy/items/c891e20c36eb1fe2a4f5)がされていること
+- [ ] JSによるなんらかの機能があること（ショボくても良い）
+- [ ] [OGPタグが入っていること](https://qiita.com/sutara79/items/d7a45f6c4796c1ee1590)
+- [ ] [Faviconが入っていること](https://qiita.com/deerboy/items/0a2d3ce368c5134511b8)
+- [ ] 正しいコミットメッセージが使われていること。
 
 ```
 feat(作業対象): 作業内容 ← 開発の場合
