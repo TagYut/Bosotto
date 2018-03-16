@@ -1,36 +1,35 @@
 <template>
-  <div>
+  <div id="app">
     <router-view/>
   </div>
 </template>
 
 <script>
-import top from "./components/top.vue"
+import 'normalize.css'
+import * as firebase from 'firebase'
+
+var config = {
+  apiKey: 'AIzaSyB9rbHYXMHuVa4kXx2Tq4wDr51e1NjEXUg',
+  authDomain: 'yuesaga4.firebaseapp.com',
+  databaseURL: 'https://yuesaga4.firebaseio.com',
+  projectId: 'yuesaga4',
+  storageBucket: 'yuesaga4.appspot.com',
+  messagingSenderId: '688008551325'
+}
+firebase.initializeApp(config)
+
 export default {
-  components: {
-    top
-  }
+  name: 'App'
 }
 </script>
 
 <style>
-  @import url(http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css);
-  @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-  @import url(https://fonts.googleapis.com/css?family=Rammetto+One);
-  @import url(https://fonts.googleapis.com/earlyaccess/mplus1p.css);
-
-  .wf-mplus1p { font-family: "Mplus 1p"; }
-
-  /* 以下のhtml2行はYahooのreset.cssを使った都合でこれを入れておかないと背景がおかしくなる */
-  html {
-    background-color: transparent;
-    background-image: none;
-  }
-
-  body {
-    background: whitesmoke;
-    font-family: "Rammetto One","Mplus 1p", cursive;
-    color: #000;
-    font-size: 2rem;;
-  }
+body {
+  background: gold;
+  color: black;
+  font-family: 'serif','Yu Mincho', 'YuMincho', serif;
+  font-size: 10px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 </style>
