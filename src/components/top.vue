@@ -1,16 +1,16 @@
 <template>
   <div class="main">
     <div class="slope">
-      <div class="slope__reverse">
-        <h1 class="bosotto">{{ cry }}<i class="material-icons label">thumb_up</i></h1>
-        <div class="slope__bigText">
-          <h1>{{ msg }}</h1>
+      <div class="slope__reverse" id="point">
+        <h1 class="bosotto anim" v-bind:style="{ margin: hei + 'vh' }">{{ cry }}<i class="material-icons label">thumb_up</i></h1>
+        <div class="slope__big-text">
+          <h1>Bosotto it.</h1>
         </div>
-        <div class="slope__textBox">
+        <div class="slope__text-box">
           <h2 class="slope__text">想いはあるか？幸せを知りたいか？生きる辛さを覚えているか？であれば朗報だ。おまえの辛さは変わらない。幸せにもならない。だが、想いはここで吐き出していけ。さあ、勇気を出して。おまえの想いは保存され、知らぬ誰かがそれを読む。そしてきっと、また想う。ぼそっとな。</h2>
           <p class="counter">{{ 31-count.length }}字</p>
-          <input v-model.trim='count' maxlength='60' placeholder='つづる言葉はシンプルに' autofocus id="bosottoInput"><br>
-          <button class="gotoBosott" @click="boso">ぼそっと呟く<i class="material-icons click">play_for_work</i></button>
+          <input v-model.trim='count' maxlength='31' placeholder='つづる言葉はシンプルに' autofocus id="bosotto-input"><br>
+          <button class="goto-bosott" @click="boso(); + plus();">ぼそっと呟く<i class="material-icons click">play_for_work</i></button>
           <p class="foot">© 2018 Bosottit.com</p>
         </div>
       </div>
@@ -21,35 +21,30 @@
 import * as firebase from 'firebase'
 
 export default {
-  name: 'HelloWorld',
   data () {
     return {
       count: '',
-      msg: 'Bosott it.',
+      anim: false,
       cry: 'この文章がちょうど30文字という確証はないがたぶんそうだろう',
+      hei: (Math.floor(Math.random() * 76) + 5),
       Vue: require('vue'),
       firebase: require('firebase'),
       Vuefire: require('vuefire')
     }
   },
-  created: {
-  },
-  watch: {
-    // ウォッチは稼働しない。あとでやる
-    cry () {
-      firebase.database().ref('/data').on('value', (snapshot) => {
-        this.cry = snapshot.val().sakebu
-      })
-    }
-  },
   methods: {
     boso () {
-      let sakebi = document.getElementById('bosottoInput').value
+      let sakebi = document.getElementById('bosotto-input').value
       console.log(sakebi)
       firebase.database().ref('/data/sakebi').push(sakebi)
+      // デバッグ用記述。リリース時に消す
+      this.cry = sakebi
     },
-    reload () {
-      this.$router.push({ path: 'bosotto' })
+    plus () {
+      console.log('yatta!')
+    // 作成途中。クリックするとanimationさせたい
+    // let test = document.getElementById('point')
+    // test.classList.add('anim')
     }
   }
 }
@@ -65,35 +60,20 @@ export default {
   font-size: 36px;
   vertical-align: -5px;
 }
-.counter {
-  position: absolute;
-  transform: rotate(-8deg);
-  display: inline-block;
-  margin:-2.5vh -7vw -1vh;
-  font-size: 1.9rem;
-  @media screen and (min-width: 600px) {
-  font-size: 2.3rem;
-  margin: 0 -3vw -1vh;
-  }
-  &::first-letter{
-    font-size: 2.5rem;
-  @media screen and (min-width: 600px) {
-  font-size: 3.6rem;
-  }
-  }
-}
 .bosotto {
+  z-index: 10;
+  margin-top: 1vh;
+ // padding-left: 300vw;
   position: absolute;
   white-space:nowrap;
-  z-index: 2;
-  margin-top: 330px;
   font-size: 25px;
   font-family: 'Yu Gothic','YuGothic',sans-serif;
   font-weight: bold;
   // 被ってボタン押せないので当たり判定なくすやつ
   pointer-events: none;
-  // 流れるコメントに枠線を付けるやつ
-  text-shadow: -5px -5px #000, 5px -5px #000,-5px 5px #000, 5px 5px #000;
+}
+.anim {
+  padding-left: 0;
   // こっからアニメーション処理
   animation-name: bosotto;
   animation-duration: 6s;
@@ -104,20 +84,38 @@ export default {
     to{ transform: translate(-300vw, 0); }
   }
   @media screen and (min-width: 600px) {
-    animation-duration: 12s;
+    animation-duration: 10s;
     @keyframes bosotto {
     from{ transform: translate(100vw, 0); }
     to{ transform: translate(-200vw, 0); }
   }
   }
 }
-#bosottoInput {
+.counter {
+  height: 2.5rem;
+  position: absolute;
+  transform: rotate(-15deg);
+  display: inline-block;
+  margin:-2.5vh -7vw -1vh;
+  font-size: 1.9rem;
+  @media screen and (min-width: 600px) {
+  font-size: 2.3rem;
+  margin: 0 -2.8vw -1vh;
+  }
+  &::first-letter{
+    font-size: 2.5rem;
+  @media screen and (min-width: 600px) {
+  font-size: 3.6rem;
+  }
+  }
+}
+#bosotto-input {
   margin: 1vh 0 1vh 0;
   font-size: 20px;
   font-family: 'Yu Gothic','YuGothic',sans-serif;
   font-weight: bold;
   background: whitesmoke;
-  border: double 3px grey;
+  border: double 1px grey;
   transform: rotate(-2deg);
   @media screen and (min-width: 600px) {
     font-size:35px;
@@ -151,7 +149,7 @@ export default {
       padding-top: 5vh;
     }
   }
-  &__bigText {
+  &__big-text {
     margin-right: 50px;
     padding-top: 1vh;
     transform: rotate(-1deg);
@@ -162,7 +160,7 @@ export default {
       font-size: 40px;
     }
   }
-  &__textBox {
+  &__text-box {
     padding-left: 5vw;
     transform: rotate(1deg);
     width: 85vw;
@@ -170,7 +168,7 @@ export default {
     font-size: 2em;
   }
   }
-  .gotoBosott {
+  .goto-bosott {
     cursor: pointer;
     padding-bottom: 1vh;
     background: rgba(0,0,0,0);;
