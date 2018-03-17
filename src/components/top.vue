@@ -3,10 +3,6 @@
     <div class="slope">
       <div class="slope__reverse" id="point">
         <h1 class="bosotto anim" v-once v-bind:style="{ margin: hei + 'vh' }">{{ cry }}<i class="material-icons label">thumb_up</i></h1>
-        <h1 class="bosotto anim" v-once v-bind:style="{ margin: hei + 'vh' }">これはダミーテキストなんですけど、ダメですねこれは<i class="material-icons label">thumb_up</i></h1>
-        <h1 class="bosotto anim" v-once v-bind:style="{ margin: hei + 'vh' }">そのinputボックスは入力しても意味ないですよ。いいわけです<i class="material-icons label">thumb_up</i></h1>
-        <h1 class="bosotto anim" v-once v-bind:style="{ margin: hei + 'vh' }">リロードするたびに高さが変わるやつです<i class="material-icons label">thumb_up</i></h1>
-        <h1 class="bosotto anim" v-once v-bind:style="{ margin: hei + 'vh' }">V-forはむずかしい。ほんとに<i class="material-icons label">thumb_up</i></h1>
         <div class="slope__big-text">
           <h1>Bosott it.</h1>
         </div>
