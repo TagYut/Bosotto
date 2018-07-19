@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import 'normalize.css'
 import * as firebase from 'firebase'
 
 var config = {
