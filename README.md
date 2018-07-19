@@ -1,4 +1,5 @@
 # bosotto
+https://tagyut.github.io/Bosotto/#/
 
 > Vue.js and Firebase.  
 DB連携がうまくいっていないので、ローカルでコメントが流れるだけ。  
